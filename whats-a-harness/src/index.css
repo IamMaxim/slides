@@ -1,0 +1,182 @@
+:root {
+    /* palette */
+    --bg: #0a0a0d;
+    --bg-elev: #14141a;
+    --ink: #f5f0e6;
+    --ink-soft: #aea798;
+    --ink-mute: #6c6759;
+    --line: #2a2a33;
+    --line-soft: #1c1c24;
+    --accent: #ffb547;
+    --accent-soft: rgba(255, 181, 71, 0.18);
+    --accent-line: rgba(255, 181, 71, 0.45);
+    --cool: #7bd6c3;
+    --warn: #ff7a7a;
+
+    /* type */
+    --display: "IBM Plex Sans", system-ui, sans-serif;
+    --sans: "IBM Plex Sans", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+
+    color-scheme: dark;
+    color: var(--ink);
+    background: var(--bg);
+    font: 400 18px/1.45 var(--sans);
+    letter-spacing: 0.005em;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+body {
+    background:
+        radial-gradient(1200px 800px at 20% 0%, rgba(255, 181, 71, 0.05), transparent 60%),
+        radial-gradient(900px 600px at 100% 100%, rgba(123, 214, 195, 0.04), transparent 60%), var(--bg);
+}
+
+/* faint graph-paper grid */
+#root::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(255, 240, 200, 0.05) 1px, transparent 0);
+    background-size: 28px 28px;
+    pointer-events: none;
+    z-index: 0;
+    mask-image: radial-gradient(ellipse at center, black 40%, transparent 95%);
+}
+
+/* film grain overlay */
+#root::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.035;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--display);
+    font-weight: 600;
+    margin: 0;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+}
+
+p {
+    margin: 0;
+}
+
+/* ---- shared UI text components ---- */
+.slide-title {
+    font-family: var(--display);
+    font-weight: 300;
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    font-variation-settings:
+        "opsz" 144,
+        "SOFT" 50,
+        "WONK" 1;
+    max-width: 18ch;
+    font-size: clamp(24px, 5.5vw, 48px); /* size=lg (default) */
+}
+.slide-title[data-size="md"] {
+    font-size: clamp(36px, 4vw, 56px);
+}
+.slide-title[data-size="sm"] {
+    font-size: clamp(30px, 3.2vw, 44px);
+}
+.slide-title[data-align="center"] {
+    text-align: center;
+}
+
+.eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+}
+
+.body-text {
+    color: var(--ink-soft);
+    font-size: 17px; /* size=md (default) */
+    line-height: 1.5;
+    max-width: 80ch;
+}
+.body-text[data-size="lg"] {
+    font-size: 22px;
+}
+.body-text[data-size="sm"] {
+    font-size: 14px;
+}
+
+.token {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1.2;
+    white-space: pre;
+    background: var(--bg-elev);
+    color: var(--ink);
+    border: 1px solid var(--line);
+}
+.token[data-variant="accent"] {
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-color: var(--accent-line);
+}
+.token[data-variant="cool"] {
+    background: rgba(123, 214, 195, 0.15);
+    color: var(--cool);
+    border-color: rgba(123, 214, 195, 0.4);
+}
+.token[data-variant="mute"] {
+    background: transparent;
+    color: var(--ink-soft);
+    border: 1px dashed var(--line);
+}
+.token[data-variant="ghost"] {
+    background: transparent;
+    color: var(--ink-mute);
+    border: 1px dashed var(--line-soft);
+}
+
+code,
+.mono {
+    font-family: var(--mono);
+}
+
+button {
+    font-family: var(--sans);
+    cursor: pointer;
+}
+
+::selection {
+    background: var(--accent-soft);
+    color: var(--ink);
+}
