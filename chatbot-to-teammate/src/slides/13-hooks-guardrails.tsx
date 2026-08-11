@@ -157,11 +157,16 @@ function RailsDiagram({ step }: { step: number }) {
       <RoundNode at={MODEL} label="модель" sub="стохастика" color="var(--accent)" />
       <RoundNode at={TOOL} label="инструмент" sub="правка, запуск" color="var(--ink-soft)" size={15} />
 
-      {/* step 0: the pre-hook snaps onto the path, before the tool call */}
+      {/* step 0: the pre-hook snaps onto the path, before the tool call.
+          Gated on step >= 0 (always true) rather than a mount animation: the
+          deck remounts every slide on entry (AnimatePresence mode="wait"), so
+          a mount-only reveal also fires on backward entry from slide 14,
+          landing on the last step and popping in over an otherwise-settled
+          diagram. */}
       <motion.g
-        initial={{ opacity: 0, scale: 0.72 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.45, delay: 0.15, ease: [0.34, 1.5, 0.64, 1] }}
+        initial={false}
+        animate={{ opacity: step >= 0 ? 1 : 0, scale: step >= 0 ? 1 : 0.72 }}
+        transition={{ duration: 0.45, ease: [0.34, 1.5, 0.64, 1] }}
         style={{ transformOrigin: `${PRE.x}px ${PRE.y}px` }}
       >
         <HookBlock at={PRE} label="pre-hook" sub="запрет push в main" />

@@ -108,12 +108,15 @@ function ContextDiagram({ step }: { step: number }) {
         задача
       </text>
 
+      {/* debris reads as live context only between step 1 and the restart;
+          past step 2 it dims to a residue so the fresh block reads as the
+          only thing actually in the window post-restart. */}
       {DEBRIS.map((d, i) => (
         <motion.g
           key={d.label}
           initial={false}
-          animate={{ opacity: step >= 1 ? 1 : 0 }}
-          transition={{ duration: 0.4, delay: step >= 1 ? i * 0.1 : 0 }}
+          animate={{ opacity: step >= 2 ? 0.25 : step >= 1 ? 1 : 0 }}
+          transition={{ duration: 0.4, delay: step >= 1 && step < 2 ? i * 0.1 : 0 }}
         >
           <rect
             x={d.x0}
