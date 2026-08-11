@@ -5,6 +5,13 @@ import { claimSlide } from './03-claim';
 import { eraChatgptSlide } from './04-era-chatgpt';
 import { eraCopilotSlide } from './05-era-copilot';
 import { eraCursorSlide } from './06-era-cursor';
+import { loopSearchSlide } from './07-loop-search';
+import { feedbackLadderSlide } from './08-feedback-ladder';
+import { definitionOfDoneSlide } from './09-definition-of-done';
+import { agentErrorsSlide } from './10-agent-errors';
+import { contextHygieneSlide } from './11-context-hygiene';
+import { eraClaudeCodeSlide } from './12-era-claude-code';
+import { hooksGuardrailsSlide } from './13-hooks-guardrails';
 import { finalSlide } from './35-final';
 
 export const slides: Slide[] = [
@@ -14,5 +21,12 @@ export const slides: Slide[] = [
   eraChatgptSlide,
   eraCopilotSlide,
   eraCursorSlide,
+  loopSearchSlide,
+  feedbackLadderSlide,
+  definitionOfDoneSlide,
+  agentErrorsSlide,
+  contextHygieneSlide,
+  eraClaudeCodeSlide,
+  hooksGuardrailsSlide,
   finalSlide,
 ];
