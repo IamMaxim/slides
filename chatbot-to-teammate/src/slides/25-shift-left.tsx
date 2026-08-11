@@ -17,15 +17,18 @@ const AGENT = { cx: 92, cy: BELT_Y, r: 46 };
 const BELT_X0 = 138;
 const BELT_X1 = 604;
 
-/** Square, hard-edged blocks — the deterministic half, in slide 13's language. */
-const GATE_W = 84;
+/** Square, hard-edged blocks — the deterministic half, in slide 13's language.
+ *  Narrower and tighter-packed than a naive even spread: the row has to clear
+ *  its own footprint well before CARD_DESK, or the parked card paints over
+ *  the last gate instead of resting clean at the human's desk. */
+const GATE_W = 72;
 const GATE_TOP = 216;
 const GATE_H = 96;
 const GATES = [
-  { cx: 210, label: 'lint', sub: 'стиль', at: 0 },
-  { cx: 322, label: 'типы', sub: 'форма', at: 1 },
-  { cx: 434, label: 'тесты', sub: 'поведение', at: 1 },
-  { cx: 546, label: 'само-ревью', sub: 'свой диф', at: 2 },
+  { cx: 196, label: 'lint', sub: 'стиль', at: 0 },
+  { cx: 292, label: 'типы', sub: 'форма', at: 1 },
+  { cx: 388, label: 'тесты', sub: 'поведение', at: 1 },
+  { cx: 484, label: 'само-ревью', sub: 'свой диф', at: 2 },
 ];
 
 const DESK_CX = 662;
