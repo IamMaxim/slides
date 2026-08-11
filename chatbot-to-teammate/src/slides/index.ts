@@ -12,6 +12,9 @@ import { agentErrorsSlide } from './10-agent-errors';
 import { contextHygieneSlide } from './11-context-hygiene';
 import { eraClaudeCodeSlide } from './12-era-claude-code';
 import { hooksGuardrailsSlide } from './13-hooks-guardrails';
+import { eraCommandsSlide } from './14-era-commands';
+import { goalAnatomySlide } from './15-goal-anatomy';
+import { teamKnowledgeSlide } from './16-team-knowledge';
 import { finalSlide } from './35-final';
 
 export const slides: Slide[] = [
@@ -28,5 +31,8 @@ export const slides: Slide[] = [
   contextHygieneSlide,
   eraClaudeCodeSlide,
   hooksGuardrailsSlide,
+  eraCommandsSlide,
+  goalAnatomySlide,
+  teamKnowledgeSlide,
   finalSlide,
 ];
