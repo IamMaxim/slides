@@ -135,8 +135,13 @@ function RailsDiagram({ step }: { step: number }) {
         initial={{ rotate: 0 }}
         animate={{ rotate: 360 }}
         transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
-        style={{ transformOrigin: `${RING_C.x}px ${RING_C.y}px` }}
       >
+        {/* framer builds its own transform-origin for SVG (fill-box, 50% 50%) and
+            ignores style.transformOrigin, so a group holding only the dot would
+            spin it on its own centre instead of orbiting. The unpainted circle is
+            a counterweight: it makes the group's box symmetric about the ring
+            centre — including the dot's own radius — so that centre is the pivot. */}
+        <circle cx={RING_C.x} cy={RING_C.y} r={RING_R + 6} fill="none" stroke="none" />
         <circle cx={RING_C.x} cy={RING_C.y - RING_R} r={6} fill="var(--accent)" />
       </motion.g>
 

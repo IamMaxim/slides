@@ -140,8 +140,13 @@ function GateDiagram({ step }: { step: number }) {
         initial={{ rotate: 0 }}
         animate={{ rotate: 360 }}
         transition={{ duration: 5.2, repeat: Infinity, ease: 'linear' }}
-        style={{ transformOrigin: `${LOOP_C.x}px ${LOOP_C.y}px` }}
       >
+        {/* framer builds its own transform-origin for SVG (fill-box, 50% 50%) and
+            ignores style.transformOrigin, so a group holding only the dot would
+            spin it on its own centre instead of orbiting. The unpainted circle is
+            a counterweight: it makes the group's box symmetric about the loop
+            centre — including the dot's own radius — so that centre is the pivot. */}
+        <circle cx={LOOP_C.x} cy={LOOP_C.y} r={LOOP_R + 6} fill="none" stroke="none" />
         <circle cx={LOOP_C.x} cy={LOOP_C.y - LOOP_R} r={6} fill="var(--accent)" />
       </motion.g>
 
@@ -185,8 +190,10 @@ function GateDiagram({ step }: { step: number }) {
           initial={{ rotate: 0 }}
           animate={{ rotate: 360 }}
           transition={{ duration: 10.4, repeat: Infinity, ease: 'linear' }}
-          style={{ transformOrigin: `${GATE_X}px ${EXIT_Y}px` }}
         >
+          {/* counterweight: three spokes at 0/120/240° have an off-centre box, and
+              framer pivots SVG on that box — without this the rotor would wobble. */}
+          <circle cx={GATE_X} cy={EXIT_Y} r={21} fill="none" stroke="none" />
           {[0, 120, 240].map((a) => (
             <line
               key={a}
