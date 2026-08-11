@@ -19,4 +19,14 @@ export default defineConfig([
       globals: globals.browser,
     },
   },
+  {
+    // Slide modules export one `Slide` data object and keep their diagram
+    // components local to the file (the part-1 idiom). Fast refresh of a slide
+    // module is moot — the Deck renders from the `slides` array — so the
+    // component-only-export rule buys nothing here.
+    files: ['src/slides/**/*.tsx'],
+    rules: {
+      'react-refresh/only-export-components': 'off',
+    },
+  },
 ])
