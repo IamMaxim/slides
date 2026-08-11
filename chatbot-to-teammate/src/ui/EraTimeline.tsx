@@ -15,6 +15,14 @@ const ERAS = ['чатбот', 'автокомплит', 'агент в IDE', 'ha
  */
 let lastCurrent = 0;
 
+/**
+ * Fixed width of the compact strip's label slot, sized to the longest label
+ * («SLASH-КОМАНДЫ» / «ГРАФЫ АГЕНТОВ» ≈ 97px at 11px mono + 0.08em tracking).
+ * Constant geometry means a corner-anchored marker never jitters as the era
+ * changes, and the slot still occupies its space when no era is current.
+ */
+const COMPACT_LABEL_WIDTH = 100;
+
 function LoopGlyph({ size, color }: { size: number; color: string }) {
   return (
     <svg viewBox="0 0 24 24" width={size} height={size} fill="none" aria-hidden>
@@ -165,17 +173,22 @@ export function EraTimeline({ current, revealed = 6, compact = false }: Props) {
 
   // Compact: the strip stays narrow enough for a corner marker, so only the
   // current era is spelled out — at full 11px so it stays readable from the back.
+  // The label slot is a fixed width (sized to the longest label) and is always
+  // rendered, so the component's total width — and therefore the dots' position
+  // under any anchoring — is identical for every value of `current`.
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
       {strip}
       <span
         style={{
+          flex: `0 0 ${COMPACT_LABEL_WIDTH}px`,
+          width: COMPACT_LABEL_WIDTH,
           fontFamily: 'var(--mono)',
           fontSize: 11,
           letterSpacing: '0.08em',
           textTransform: 'uppercase',
           whiteSpace: 'nowrap',
-          color: current === undefined ? 'var(--ink-mute)' : 'var(--accent)',
+          color: 'var(--accent)',
           transition: 'color 350ms ease',
           marginTop: glyphRow / 2,
         }}
