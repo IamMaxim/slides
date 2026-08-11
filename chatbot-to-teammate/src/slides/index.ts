@@ -22,6 +22,15 @@ import { adversarialSlide } from './20-adversarial';
 import { judgeDrySlide } from './21-judge-dry';
 import { schemasSlide } from './22-schemas';
 import { budgetSlide } from './23-budget';
+import { bottleneckSlide } from './24-bottleneck';
+import { shiftLeftSlide } from './25-shift-left';
+import { reviewToLintSlide } from './26-review-to-lint';
+import { repoPromptSlide } from './27-repo-prompt';
+import { trustLadderSlide } from './28-trust-ladder';
+import { metricsSlide } from './29-metrics';
+import { antipatternsSlide } from './30-antipatterns';
+import { whatStaysHumanSlide } from './31-what-stays-human';
+import { roleShiftSlide } from './32-role-shift';
 import { finalSlide } from './35-final';
 
 export const slides: Slide[] = [
@@ -48,5 +57,14 @@ export const slides: Slide[] = [
   judgeDrySlide,
   schemasSlide,
   budgetSlide,
+  bottleneckSlide,
+  shiftLeftSlide,
+  reviewToLintSlide,
+  repoPromptSlide,
+  trustLadderSlide,
+  metricsSlide,
+  antipatternsSlide,
+  whatStaysHumanSlide,
+  roleShiftSlide,
   finalSlide,
 ];
