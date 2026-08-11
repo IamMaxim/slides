@@ -195,7 +195,8 @@ function ToolLoopDiagram({ step }: { step: number }) {
 
         {/* the dot never stops going round: ambient, step-independent */}
         <motion.g
-          initial={false}
+          // ambient: initial = first keyframe, else a prod build never starts the loop
+          initial={{ x: A.x, y: A.y }}
           animate={{ x: [A.x, B.x, C.x, A.x], y: [A.y, B.y, C.y, A.y] }}
           transition={{ duration: 4.2, times: DOT_TIMES, repeat: Infinity, ease: 'linear' }}
         >

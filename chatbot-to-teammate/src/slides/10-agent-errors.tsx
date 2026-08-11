@@ -157,7 +157,8 @@ function ErrorsDiagram({ step }: { step: number }) {
             fontFamily="var(--mono)"
             fontSize="19"
             fill="var(--warn)"
-            initial={false}
+            // ambient: initial = first keyframe, else a prod build never starts the loop
+            initial={{ opacity: 0.15 }}
             animate={{ opacity: [0.15, 1, 0.15] }}
             transition={{ duration: q.dur, delay: q.delay, repeat: Infinity, ease: 'easeInOut' }}
           >
@@ -168,7 +169,8 @@ function ErrorsDiagram({ step }: { step: number }) {
 
       {/* retries piling up, jittering as they go */}
       <motion.g
-        initial={false}
+        // ambient: initial = first keyframe, else a prod build never starts the loop
+        initial={{ x: 0 }}
         animate={{ x: [0, -2, 2, -1, 0] }}
         transition={{ duration: 0.6, repeat: Infinity, ease: 'linear' }}
       >
@@ -177,7 +179,8 @@ function ErrorsDiagram({ step }: { step: number }) {
         </text>
         <g clipPath="url(#s10-tick-clip)">
           <motion.g
-            initial={false}
+            // ambient: initial = first keyframe, else a prod build never starts the loop
+            initial={{ y: TICK.y[0] }}
             animate={{ y: TICK.y }}
             transition={{ duration: 6, times: TICK.t, repeat: Infinity, ease: 'linear' }}
           >

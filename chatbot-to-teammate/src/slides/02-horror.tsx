@@ -120,7 +120,11 @@ function MRPanel({ step }: { step: number }) {
 
         <div style={{ position: 'relative', height: VIEWPORT_H, overflow: 'hidden' }}>
           <motion.div
-            initial={false}
+            // Ambient keyframe loop: it needs a real mount animation to start,
+            // so `initial` is the first keyframe. Suppressing the mount pass
+            // makes a production build render the last keyframe and freeze
+            // there — React's dev double-mount is what hides that in `dev`.
+            initial={{ y: 0 }}
             animate={{ y: [0, -VIEWPORT_H] }}
             transition={{ duration: 16, ease: 'linear', repeat: Infinity }}
             style={{ willChange: 'transform' }}

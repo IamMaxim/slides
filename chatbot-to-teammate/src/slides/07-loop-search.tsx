@@ -206,7 +206,8 @@ function SearchDiagram({ step }: { step: number }) {
       <path d={WALK_PATH} fill="none" stroke="var(--warn)" strokeWidth="1" opacity="0.22" />
       {/* ambient: the walk never stops, and it reverses instead of teleporting */}
       <motion.g
-        initial={false}
+        // ambient: initial = first keyframe, else a prod build never starts the loop
+        initial={{ x: WALK_X[0], y: WALK_Y[0] }}
         animate={{ x: WALK_X, y: WALK_Y }}
         transition={{
           duration: 17,
@@ -247,7 +248,8 @@ function SearchDiagram({ step }: { step: number }) {
           fill="none"
           stroke="var(--cool)"
           strokeWidth="1.2"
-          initial={false}
+          // ambient: initial = first keyframe, else a prod build never starts the loop
+          initial={{ scale: 1, opacity: 0.55 }}
           animate={{ scale: [1, 2.1, 1], opacity: [0.55, 0, 0.55] }}
           transition={{ duration: 2.2, repeat: Infinity, ease: 'easeOut' }}
           style={{ transformOrigin: `${tx}px ${ty}px` }}
@@ -266,7 +268,8 @@ function SearchDiagram({ step }: { step: number }) {
 
       <motion.g initial={false} animate={{ opacity: step >= 1 ? 1 : 0 }} transition={{ duration: 0.4 }}>
         <motion.g
-          initial={false}
+          // ambient: initial = first keyframe, else a prod build never starts the loop
+          initial={{ x: SPIRAL_X[0], y: SPIRAL_Y[0], opacity: 0 }}
           animate={{ x: SPIRAL_X, y: SPIRAL_Y, opacity: [0, 1, 1, 1, 0] }}
           transition={{
             x: { duration: 5.6, times: SPIRAL_T, repeat: Infinity, repeatDelay: 0.4, ease: 'linear' },

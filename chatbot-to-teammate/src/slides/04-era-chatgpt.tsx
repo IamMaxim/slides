@@ -110,7 +110,8 @@ function Packet({
         {label}
       </text>
       <motion.g
-        initial={false}
+        // ambient: initial = first keyframe, else a prod build never starts the loop
+        initial={{ x: path.x1, y: path.y1 }}
         animate={{ x: [path.x1, path.x2], y: [path.y1, path.y2] }}
         transition={{ duration: 2.4, repeat: Infinity, repeatDelay: 0.6, ease: 'linear', delay }}
       >

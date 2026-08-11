@@ -90,7 +90,8 @@ function EnvironmentDiagram({ step }: { step: number }) {
       </motion.g>
       <motion.g initial={false} animate={{ opacity: step >= 2 ? 1 : 0 }} transition={{ duration: 0.4, delay: step >= 2 ? 0.8 : 0 }}>
         <motion.g
-          initial={false}
+          // ambient: initial = first keyframe, else a prod build never starts the loop
+          initial={{ x: LOOP_X[0], y: LOOP_Y[0] }}
           animate={{ x: LOOP_X, y: LOOP_Y }}
           transition={{ duration: 11, times: LOOP_T, repeat: Infinity, ease: 'linear' }}
         >
@@ -164,7 +165,8 @@ function EnvironmentDiagram({ step }: { step: number }) {
         strokeWidth="1"
         strokeDasharray="3 7"
         opacity="0.5"
-        initial={false}
+        // ambient: initial = first keyframe, else a prod build never starts the loop
+        initial={{ rotate: 0 }}
         animate={{ rotate: 360 }}
         transition={{ duration: 26, repeat: Infinity, ease: 'linear' }}
         style={{ transformOrigin: `${CORE.x}px ${CORE.y}px` }}

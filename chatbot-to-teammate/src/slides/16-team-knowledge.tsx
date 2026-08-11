@@ -7,7 +7,9 @@ import { Split, Stack } from '../ui/Layout';
 type Pt = { x: number; y: number };
 
 const W = 580;
-const H = 500;
+/** Shorter than the deck's usual 500: this diagram ends at the sinks' caption
+ *  (y≈395), and the box is trimmed to match instead of leaving a hole. */
+const H = 420;
 
 /** Three people, each with the workflow they worked out privately. */
 const PEOPLE = [
@@ -158,7 +160,8 @@ function KnowledgeDiagram({ step }: { step: number }) {
         {IN_KEYS.map((k, i) => (
           <motion.g
             key={i}
-            initial={false}
+            // ambient: initial = first keyframe, else a prod build never starts the loop
+            initial={{ x: k.x[0], y: k.y[0], opacity: FLOW_OPACITY[0] }}
             animate={{ x: k.x, y: k.y, opacity: FLOW_OPACITY }}
             transition={{
               x: { duration: 2.4, repeat: Infinity, repeatDelay: 0.9, delay: i * 0.4, ease: 'linear' },
@@ -234,7 +237,8 @@ function KnowledgeDiagram({ step }: { step: number }) {
         {OUT_KEYS.map((k, i) => (
           <motion.g
             key={i}
-            initial={false}
+            // ambient: initial = first keyframe, else a prod build never starts the loop
+            initial={{ x: k.x[0], y: k.y[0], opacity: FLOW_OPACITY[0] }}
             animate={{ x: k.x, y: k.y, opacity: FLOW_OPACITY }}
             transition={{
               x: { duration: 2.2, repeat: Infinity, repeatDelay: 0.7, delay: i * 0.3, ease: 'linear' },
@@ -252,35 +256,6 @@ function KnowledgeDiagram({ step }: { step: number }) {
             <circle r={4.5} fill="var(--cool)" />
           </motion.g>
         ))}
-      </motion.g>
-
-      {/* ---- step 2: the line that makes it one thing ---- */}
-      <motion.g
-        initial={false}
-        animate={{ opacity: step >= 2 ? 1 : 0, y: step >= 2 ? 0 : -8 }}
-        transition={{ duration: 0.4, delay: step >= 2 ? 0.15 : 0, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <rect
-          x={W / 2 - 130}
-          y={430}
-          width={260}
-          height={42}
-          rx={4}
-          fill="var(--accent-soft)"
-          stroke="var(--accent-line)"
-          strokeWidth="1"
-        />
-        <text
-          x={W / 2}
-          y={456}
-          textAnchor="middle"
-          fontFamily="var(--mono)"
-          fontSize="13"
-          fill="var(--accent)"
-          letterSpacing="0.06em"
-        >
-          онбординг = git pull
-        </text>
       </motion.g>
     </svg>
   );

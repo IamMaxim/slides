@@ -183,7 +183,8 @@ function AnatomyDiagram({ step }: { step: number }) {
         transition={{ duration: 0.35 }}
       >
         <motion.g
-          initial={false}
+          // ambient: initial = first keyframe, else a prod build never starts the loop
+          initial={{ rotate: 0 }}
           animate={{ rotate: 360 }}
           transition={{ duration: 5.6, repeat: Infinity, ease: 'linear' }}
           style={{ transformOrigin: `${RING_C.x}px ${RING_C.y}px` }}
@@ -319,7 +320,10 @@ function AnatomyDiagram({ step }: { step: number }) {
         fill="color-mix(in srgb, var(--cool) 20%, transparent)"
         stroke="var(--cool)"
         strokeWidth="1.6"
-        initial={false}
+        // First keyframe of the running loop *is* the parked value (0), so this
+        // initial is a no-op when the run is off and still lets the ambient loop
+        // start when the slide is mounted straight onto the last step.
+        initial={{ opacity: EXIT_OPACITY[0] }}
         animate={{ opacity: running ? EXIT_OPACITY : 0 }}
         transition={
           running
@@ -333,7 +337,9 @@ function AnatomyDiagram({ step }: { step: number }) {
         transition={{ duration: 0.3 }}
       >
         <motion.g
-          initial={false}
+          // The run starts where it parks, so this initial is invisible off-step
+          // and still gives the loop a mount animation to start from on step 4.
+          initial={{ x: RUN_X[0], y: RUN_Y[0] }}
           animate={running ? { x: RUN_X, y: RUN_Y } : { x: SPINE_X, y: TAP_Y[0] }}
           transition={
             running

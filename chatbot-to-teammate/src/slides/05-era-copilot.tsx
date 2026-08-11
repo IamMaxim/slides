@@ -93,7 +93,8 @@ function EditorDiagram({ step }: { step: number }) {
         width={2}
         height={20}
         fill="var(--accent)"
-        initial={false}
+        // ambient: initial = first keyframe, else a prod build never starts the loop
+        initial={{ opacity: 1 }}
         animate={{ opacity: [1, 1, 0, 0, 1] }}
         transition={{ duration: 1.1, times: [0, 0.47, 0.5, 0.97, 1], repeat: Infinity, ease: 'linear' }}
       />

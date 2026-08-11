@@ -131,7 +131,8 @@ function RailsDiagram({ step }: { step: number }) {
       })}
       {/* ambient: the loop keeps turning whatever step we are on */}
       <motion.g
-        initial={false}
+        // ambient: initial = first keyframe, else a prod build never starts the loop
+        initial={{ rotate: 0 }}
         animate={{ rotate: 360 }}
         transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
         style={{ transformOrigin: `${RING_C.x}px ${RING_C.y}px` }}
@@ -149,7 +150,8 @@ function RailsDiagram({ step }: { step: number }) {
         strokeWidth="1"
         strokeDasharray="3 7"
         opacity="0.5"
-        initial={false}
+        // ambient: initial = first keyframe, else a prod build never starts the loop
+        initial={{ rotate: 0 }}
         animate={{ rotate: 360 }}
         transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}
         style={{ transformOrigin: `${MODEL.x}px ${MODEL.y}px` }}

@@ -75,7 +75,8 @@ function GateDiagram({ step }: { step: number }) {
         </text>
         <g clipPath="url(#s9-tick-clip)">
           <motion.g
-            initial={false}
+            // ambient: initial = first keyframe, else a prod build never starts the loop
+            initial={{ y: TICK.y[0] }}
             animate={{ y: TICK.y }}
             transition={{ duration: 9, times: TICK.t, repeat: Infinity, ease: 'linear' }}
           >
@@ -135,7 +136,8 @@ function GateDiagram({ step }: { step: number }) {
       </text>
       {/* ambient: the loop turns regardless of which step we are on */}
       <motion.g
-        initial={false}
+        // ambient: initial = first keyframe, else a prod build never starts the loop
+        initial={{ rotate: 0 }}
         animate={{ rotate: 360 }}
         transition={{ duration: 5.2, repeat: Infinity, ease: 'linear' }}
         style={{ transformOrigin: `${LOOP_C.x}px ${LOOP_C.y}px` }}
@@ -179,7 +181,8 @@ function GateDiagram({ step }: { step: number }) {
         />
         {/* turnstile rotor: the gate turns, one release at a time */}
         <motion.g
-          initial={false}
+          // ambient: initial = first keyframe, else a prod build never starts the loop
+          initial={{ rotate: 0 }}
           animate={{ rotate: 360 }}
           transition={{ duration: 10.4, repeat: Infinity, ease: 'linear' }}
           style={{ transformOrigin: `${GATE_X}px ${EXIT_Y}px` }}
@@ -223,7 +226,8 @@ function GateDiagram({ step }: { step: number }) {
 
         {/* one result leaving the loop, over and over */}
         <motion.g
-          initial={false}
+          // ambient: initial = first keyframe, else a prod build never starts the loop
+          initial={{ x: EXIT_FROM + 10, opacity: 0 }}
           animate={{ x: [EXIT_FROM + 10, DONE_X - 6], opacity: [0, 1, 1, 0] }}
           transition={{
             x: { duration: 2.6, repeat: Infinity, repeatDelay: 1, ease: 'linear' },
