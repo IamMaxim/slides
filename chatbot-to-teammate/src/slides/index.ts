@@ -1,9 +1,5 @@
 import type { Slide } from '../deck/types';
+import { titleSlide } from './01-title';
+import { finalSlide } from './35-final';
 
-const placeholder: Slide = {
-  id: 'placeholder',
-  title: 'от чатбота до тиммейта',
-  totalSteps: 1,
-  render: () => null,
-};
-export const slides: Slide[] = [placeholder];
+export const slides: Slide[] = [titleSlide, finalSlide];
