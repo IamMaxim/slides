@@ -68,7 +68,7 @@ function PipeDiagram({ step }: { step: number }) {
         y={CY - H_BASE}
         width={B1 - B0}
         height={H_BASE * 2}
-        fill="color-mix(in srgb, var(--warn) 12%, transparent)"
+        fill="var(--warn-soft)"
         initial={false}
         animate={{ opacity: wide ? 1 : 0 }}
         transition={{ duration: 0.5 }}

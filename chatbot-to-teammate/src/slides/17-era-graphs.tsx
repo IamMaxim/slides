@@ -112,7 +112,7 @@ function GraphBirthDiagram({ step }: { step: number }) {
               y={BAR.y}
               width={b.w}
               height={BAR.h}
-              fill="color-mix(in srgb, var(--warn) 12%, transparent)"
+              fill="var(--warn-soft)"
               stroke="var(--warn)"
               strokeWidth="1"
               opacity="0.75"

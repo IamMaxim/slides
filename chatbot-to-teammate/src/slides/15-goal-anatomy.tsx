@@ -287,7 +287,7 @@ function AnatomyDiagram({ step }: { step: number }) {
           width={BLOCKED_W}
           height={PILL_H}
           rx={6}
-          fill="color-mix(in srgb, var(--warn) 12%, transparent)"
+          fill="var(--warn-soft)"
           stroke="var(--warn)"
           strokeWidth="1.2"
         />

@@ -182,7 +182,7 @@ function EditorDiagram({ step }: { step: number }) {
           width={170}
           height={25}
           rx={5}
-          fill="color-mix(in srgb, var(--warn) 12%, transparent)"
+          fill="var(--warn-soft)"
           stroke="var(--warn)"
           strokeWidth="1"
         />

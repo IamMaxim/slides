@@ -164,7 +164,7 @@ function SchemaDiagram({ step }: { step: number }) {
         >
           <path
             d={BLOB_PATH}
-            fill="color-mix(in srgb, var(--warn) 12%, transparent)"
+            fill="var(--warn-soft)"
             stroke="var(--warn)"
             strokeWidth="1.3"
           />

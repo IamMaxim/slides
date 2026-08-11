@@ -150,7 +150,7 @@ function MetricsDiagram({ step }: { step: number }) {
           width={180}
           height={60}
           rx={6}
-          fill="color-mix(in srgb, var(--warn) 12%, transparent)"
+          fill="var(--warn-soft)"
           stroke="var(--warn)"
           strokeWidth="2"
         />

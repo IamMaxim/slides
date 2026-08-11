@@ -215,7 +215,7 @@ function ConveyorDiagram({ step }: { step: number }) {
         y={GATE_TOP}
         width={GATE_W}
         height={GATE_H}
-        fill="color-mix(in srgb, var(--warn) 12%, transparent)"
+        fill="var(--warn-soft)"
         stroke="var(--warn)"
         strokeWidth="1.8"
         // ambient: initial = first keyframe, else a prod build never starts the loop

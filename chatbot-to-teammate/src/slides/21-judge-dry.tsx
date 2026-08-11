@@ -326,13 +326,13 @@ function JudgeDryDiagram({ step }: { step: number }) {
           width={294}
           height={110}
           rx={5}
-          fill="color-mix(in srgb, var(--warn) 12%, transparent)"
+          fill="var(--warn-soft)"
           stroke="var(--warn)"
           strokeWidth="1"
           strokeOpacity="0.6"
         />
         <text x={TAIL_X} y={374} fontFamily="var(--mono)" fontSize="11" fill="var(--warn)" letterSpacing="0.04em">
-          стоп по счётчику: «нашли 10 — хватит»
+          стоп по счётчику: „нашли 10 — хватит“
         </text>
         <rect x={TAIL_X} y={392} width={TAIL_CUT} height={16} rx={2} fill="var(--accent)" opacity="0.6" />
         <rect

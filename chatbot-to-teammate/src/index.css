@@ -12,6 +12,7 @@
     --accent-line: rgba(255, 181, 71, 0.45);
     --cool: #7bd6c3;
     --warn: #ff7a7a;
+    --warn-soft: color-mix(in srgb, var(--warn) 12%, transparent);
 
     /* type */
     --display: "IBM Plex Sans", system-ui, sans-serif;

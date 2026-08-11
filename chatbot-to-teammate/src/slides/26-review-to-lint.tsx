@@ -100,7 +100,7 @@ function ForgeDiagram({ step }: { step: number }) {
           width={COUNT_W}
           height={COUNT_H}
           rx={5}
-          fill="color-mix(in srgb, var(--warn) 12%, transparent)"
+          fill="var(--warn-soft)"
           stroke="var(--warn)"
           strokeWidth="1.2"
         />
@@ -333,7 +333,7 @@ function ForgeDiagram({ step }: { step: number }) {
           y={WALL_Y}
           width={NEW_W}
           height={WALL_H}
-          fill="color-mix(in srgb, var(--warn) 12%, transparent)"
+          fill="var(--warn-soft)"
         />
         <text
           x={NEW_CX}

@@ -83,7 +83,7 @@ function MRPanel({ step }: { step: number }) {
               color: 'var(--warn)',
               borderColor: 'var(--warn)',
               borderStyle: 'solid',
-              background: 'color-mix(in srgb, var(--warn) 12%, transparent)',
+              background: 'var(--warn-soft)',
             }}
           >
             velocity ↓
