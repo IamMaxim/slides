@@ -15,6 +15,13 @@ import { hooksGuardrailsSlide } from './13-hooks-guardrails';
 import { eraCommandsSlide } from './14-era-commands';
 import { goalAnatomySlide } from './15-goal-anatomy';
 import { teamKnowledgeSlide } from './16-team-knowledge';
+import { eraGraphsSlide } from './17-era-graphs';
+import { determinismSplitSlide } from './18-determinism-split';
+import { pipelineBarrierSlide } from './19-pipeline-barrier';
+import { adversarialSlide } from './20-adversarial';
+import { judgeDrySlide } from './21-judge-dry';
+import { schemasSlide } from './22-schemas';
+import { budgetSlide } from './23-budget';
 import { finalSlide } from './35-final';
 
 export const slides: Slide[] = [
@@ -34,5 +41,12 @@ export const slides: Slide[] = [
   eraCommandsSlide,
   goalAnatomySlide,
   teamKnowledgeSlide,
+  eraGraphsSlide,
+  determinismSplitSlide,
+  pipelineBarrierSlide,
+  adversarialSlide,
+  judgeDrySlide,
+  schemasSlide,
+  budgetSlide,
   finalSlide,
 ];
