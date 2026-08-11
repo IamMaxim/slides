@@ -31,6 +31,8 @@ import { metricsSlide } from './29-metrics';
 import { antipatternsSlide } from './30-antipatterns';
 import { whatStaysHumanSlide } from './31-what-stays-human';
 import { roleShiftSlide } from './32-role-shift';
+import { mondaySlide } from './33-monday';
+import { recapSlide } from './34-recap';
 import { finalSlide } from './35-final';
 
 export const slides: Slide[] = [
@@ -66,5 +68,7 @@ export const slides: Slide[] = [
   antipatternsSlide,
   whatStaysHumanSlide,
   roleShiftSlide,
+  mondaySlide,
+  recapSlide,
   finalSlide,
 ];
