@@ -7,6 +7,7 @@ Interactive slide decks built with React + Vite.
 | Directory | Title | Language |
 |-----------|-------|----------|
 | [`whats-a-harness`](./whats-a-harness) | Что такое агенты и как их есть | RU |
+| [`chatbot-to-teammate`](./chatbot-to-teammate) | От чатбота до тиммейта | RU |
 
 ## Running a deck
 
